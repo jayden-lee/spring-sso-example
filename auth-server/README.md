@@ -1,8 +1,5 @@
 # Oauth Authorization Server
 
-## End points
-1. o
-
 ## DB Scheme
 
 ### oauth_client_details
