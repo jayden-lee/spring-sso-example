@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active: local
+
+logging:
+  level:
+    ROOT: info
+    org:
+      hibernate:
+        type: trace
+
+server:
+  port: 8082
+
+# Local env
+---
+spring:
+  profiles: local
+  jpa:
+    database: mysql
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/testdb?useSSL=false&serverTimezone=UTC
+    username: root
+    password: admin007!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# Init
+---
+spring:
+  profiles: init
+  jpa:
+    database: mysql
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/testdb?useSSL=false&serverTimezone=UTC
+    username: root
+    password: admin007!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+    platform: oauth
