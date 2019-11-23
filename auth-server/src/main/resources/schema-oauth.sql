@@ -10,7 +10,7 @@ create table IF NOT EXISTS oauth_client_details (
   refresh_token_validity INTEGER,
   additional_information VARCHAR(4096),
   autoapprove VARCHAR(256)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='클라이언트 테이블';
 
 create table IF NOT EXISTS oauth_client_token (
   token_id VARCHAR(256),
@@ -28,17 +28,17 @@ create table IF NOT EXISTS oauth_access_token (
   client_id VARCHAR(256),
   authentication LONG VARBINARY,
   refresh_token VARCHAR(256)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='액세스 토큰 테이블';
 
 create table IF NOT EXISTS oauth_refresh_token (
   token_id VARCHAR(256),
   token LONG VARBINARY,
   authentication LONG VARBINARY
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='리프레시 토큰 테이블';
 
 create table IF NOT EXISTS oauth_code (
   code VARCHAR(256), authentication LONG VARBINARY
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='인증 코드 테이블';
 
 create table IF NOT EXISTS oauth_approvals (
 	userId VARCHAR(256),
@@ -47,7 +47,7 @@ create table IF NOT EXISTS oauth_approvals (
 	status VARCHAR(10),
 	expiresAt TIMESTAMP,
 	lastModifiedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='사용자 승인 테이블';
 
 -- customized oauth_client_details table
 create table IF NOT EXISTS ClientDetails (
